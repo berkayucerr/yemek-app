@@ -4,16 +4,20 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 import jakarta.persistence.Table;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "user")
 @Getter
 @Setter
+@Builder
+@RequiredArgsConstructor
 public class User {
     @Id
-    String id;
+    Long id;
     String name;
     String surname;
     String mail;
