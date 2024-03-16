@@ -15,25 +15,25 @@ public class UserService {
     private final UserRepository repository;
 
 
-    public User save(UserDTO from){
+    public User save(UserDTO from) {
         User user = UserDTOConverter.userDTOToUser(from);
         return repository.save(user);
     }
 
-    public User update(User from){
+    public User update(User from) {
         return repository.save(from);
     }
 
-    public void delete(Long id){
+    public void delete(String id) {
         repository.deleteById(id);
     }
 
-    public UserDTO findById(Long id){
+    public UserDTO findById(String id) {
         Optional<User> user = repository.findById(id);
-        if(user.isPresent()){
+        if (user.isPresent()) {
             return UserDTOConverter.userToUserDTO(user.get());
         }
-        throw new RuntimeException("User not found");
+        throw new RuntimeException("User not found by id:" + id);
     }
 
 }
